@@ -6,7 +6,9 @@ from scrapy.http import Request
 from urllib import  parse
 from items import JobboleArticleItem
 from ArticleSpider.util.common import get_md5
-
+from selenium import webdriver
+from scrapy.xlib.pydispatch import  dispatcher
+from scrapy import signals
 """
  - spider 入口
  - start_url 为爬取的连接
@@ -108,3 +110,12 @@ class JobboleSpider(scrapy.Spider):
         if next_url:
             yield Request(url=parse.urljoin(response.url,next_url),callback=self.parse)
         pass
+
+    def __init__(self):
+            self.brower = webdriver.Chrome()
+            super(JobboleSpider, self).__init__()
+            dispatcher.connect(self.spider_closed,signals.spider_closed)
+
+    def spider_closed(self,spider):
+        print('browser is closed!')
+        self.brower.quit()

@@ -55,6 +55,7 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'ArticleSpider.middlewares.ArticlespiderDownloaderMiddleware': 543,
+   'ArticleSpider.middlewares.JSPageMiddleware':1,
    'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
 
 }
