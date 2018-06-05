@@ -119,3 +119,4 @@ class JobboleSpider(scrapy.Spider):
     def spider_closed(self,spider):
         print('browser is closed!')
         self.brower.quit()
+
