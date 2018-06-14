@@ -55,8 +55,8 @@ ROBOTSTXT_OBEY = False
 # See https://doc.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    'ArticleSpider.middlewares.ArticlespiderDownloaderMiddleware': 543,
-   'ArticleSpider.middlewares.JSPageMiddleware':1,
-   'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
+   # 'ArticleSpider.middlewares.JSPageMiddleware':1,
+   # 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware':None,
 
 }
 
@@ -73,8 +73,10 @@ ITEM_PIPELINES = {
    # 'scrapy.pipelines.images.ImagesPipeline':1,
    # 'ArticleSpider.pipelines.JsonWithEncodingPipeline':2,
    # 'ArticleSpider.pipelines.JsonExporterPipeline':2,
-   # 'ArticleSpider.pipelines.MysqlPipeline':3,
+   #  'ArticleSpider.pipelines.MysqlPipeline':3,
    'ArticleSpider.pipelines.MysqlTwistedPipline':2,
+    'ArticleSpider.pipelines.ElasticsearchPipline':1,
+
 
 }
 IMAGES_URLS_FIELD = 'front_image_url'

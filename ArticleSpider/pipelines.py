@@ -10,6 +10,9 @@ import  MySQLdb.cursors
 #
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://doc.scrapy.org/en/latest/topics/item-pipeline.html
+from models.es_types import ArticcleType
+from w3lib.html import remove_tags
+
 
 
 class ArticlespiderPipeline(object):
@@ -95,5 +98,27 @@ class MysqlTwistedPipline(object):
         cursor.execute(insert_sql,params)
 
 
+class ElasticsearchPipline(object):
+
+    def process_item(self,item,spider):
+
+        # article = ArticcleType()
+        # article.title = item['title']
+        # article.create_date= item['create_date']
+        # article.content = remove_tags(item['content'])
+        #
+        # article.front_image_url=item["front_image_url"]
+        # if "front_image_path" in item:
+        #  article.front_image_path=item['front_image_path']
+        # article.praise_nums = item["praise_nums"]
+        # article.fav_nums= item['fav_nums']
+        # article.comment_nums = item["comment_nums"]
+        # article.tags=item['tags']
+        # article.meta.id = item['url_object_id']
+        #
+        # article.save()
+        item.save_to_es()
+
+        return item
 
 

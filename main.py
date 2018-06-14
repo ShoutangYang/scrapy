@@ -14,4 +14,4 @@ import os
 #H:\CodePath\spider\ArticleSpider
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 #执行命令，相当于在控制台cmd输入改名了
-execute(["scrapy", "crawl" , "lagou"])
+execute(["scrapy", "crawl" , "jobbole"])

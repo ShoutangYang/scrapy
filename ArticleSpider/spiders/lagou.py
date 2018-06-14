@@ -72,6 +72,7 @@ class LagouSpider(CrawlSpider):
         Rule(LinkExtractor(allow=r'jobs/\d+.html'), callback='parse_job', follow=True),
 
 
+
     )
 
     def parse_item(self, response):
